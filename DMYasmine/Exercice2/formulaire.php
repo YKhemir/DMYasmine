@@ -20,26 +20,28 @@
 </html>
 
 <?php
-if(isset($_POST['nom']) && isset($_POST['adresse'] ) && isset($_POST['produit'] ) && isset($_POST['prix']) ){
-	
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['nom']) && isset($_POST['adresse']) && isset($_POST['produit']) && isset($_POST['prix'])) {
 
-    $nom= $_POST['nom'] ;
-    $adresse= $_POST['adresse'] ;
-    $produit= $_POST['produit'] ;
-    $prix=$_POST['prix'] ;
-     file_put_contents('fichier_1.txt', $nom.' '.$adresse.' '.$produit.' '.$prix);
+        $nom = $_POST['nom'];
+        $adresse = $_POST['adresse'];
+        $produit = $_POST['produit'];
+        $prix = $_POST['prix'];
 
-     // supprimer fichier 
-     if (file_exists('fichier_1.txt')) {
-      unlink('fichier_1.txt'); 
-      echo "Le fichier a été supprimé.";
-    
-     copy("fichier_1.txt", "C:\Users\yasmi\OneDrive\Bureau\Baba");
-     echo "Reussi";
-    } else {
-       echo "Données  non enregistrées";
+        $contenu = "$nom $adresse $produit $prix\n";
+        $cheminFichier = "fichier_1.txt";
+
+        if (file_put_contents($cheminFichier, $contenu, FILE_APPEND) !== false) {
+            $destination = "C:\\Users\\yasmi\\OneDrive\\Bureau\\Baba\\donnees.txt";
+
+            if (copy($cheminFichier, $destination)) {
+                echo "Réussi";
+            } else {
+                echo "Erreur lors de la copie du fichier.";
+            }
+        } else {
+            echo "Erreur lors de l'écriture dans le fichier";
+        }
     }
 }
-  
 ?>
-    
