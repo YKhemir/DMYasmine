@@ -2,5 +2,5 @@
 Exercice 1 : Affiche le nombre de jours de congée grace à des fonction
 Exercice 2 : copie un fichier contenant les données du formulaire 
 Exercice 3 : affiche un exemple en phrase grace aux création d'objet grace aux classes
-Exercice 4 : le formulaire est validé ou non grace aux javascript dans ce cas 
+Exercice 4 : le formulaire est validé ou non grace aux javascript dans ce cas j'ai comme meme une erreur il n'affiche pas en vert l'identifiant (je ne sais pas pourquoi)
 
